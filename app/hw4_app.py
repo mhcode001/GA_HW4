@@ -71,7 +71,7 @@ else:
 
     beer_name = st.sidebar.selectbox("Beer", sorted(df['beer_name'].unique().tolist()))
 
-    style = st.sidebar.selectbox("Style", sorted(df['style'].unique().tolist()))
+    style = st.sidebar.selectbox("Style", df['style'].unique().tolist())
    
     brewery_name = st.sidebar.selectbox("Brewery Name", sorted(df['brewery_name'].unique().tolist()))
     
