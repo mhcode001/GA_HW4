@@ -70,17 +70,17 @@ else:
 
     model = load_model()
 
-    beer_name = st.sidebar.selectbox("Beer", df['beer_name'].unique().tolist())  
+    beer_name = st.sidebar.selectbox("Beer", sorted(df['beer_name'].unique().tolist()))
 
-    style = st.sidebar.selectbox("Style", df['style'].unique().tolist())  
+    style = st.sidebar.selectbox("Style", sorted(df['style'].unique().tolist()))
    
-    brewery_name = st.sidebar.selectbox("Brewery Name", df['brewery_name'].unique().tolist())  
+    brewery_name = st.sidebar.selectbox("Brewery Name", sorted(df['brewery_name'].unique().tolist()))
     
-    city = st.sidebar.selectbox("City", df['city'].unique().tolist())
+    city = st.sidebar.selectbox("City", sorted(df['city'].unique().tolist()))
     
-    state = st.sidebar.selectbox("State", df['state'].unique().tolist())  
+    state = st.sidebar.selectbox("State", sorted(df['state'].unique().tolist()))
     
-    ibu = st.sidebar.slider("ibu")
+    ibu = st.sidebar.slider("ibu", 0.0, 150.0)
 
     ounces = st.sidebar.radio("ounces", ['8.4', '12', '16','24'])  
 
