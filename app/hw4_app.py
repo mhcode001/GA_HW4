@@ -13,7 +13,7 @@ import pickle
 
 st.title("Craft Beer ABU")
 
-url = r"https://raw.githubusercontent.com/mhcode001/GA_HW4_App/main/allcraftbeer.csv"
+url = r"https://raw.githubusercontent.com/mhcode001/GA_HW4_App/main/data/allcraftbeer.csv"
 
 num_rows = st.sidebar.number_input('Select Number of Rows to Load', 
                                   min_value = 500, 
