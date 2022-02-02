@@ -43,11 +43,11 @@ df = load_data(num_rows)
 
 if section == 'Data Explorer':
     
-    x_axis = st.sidebar.selectbox("Choose column for X-axis",['beer_name','style','brewery_name', 'city', 'state', 'ibu', 'ounces'])
+    x_axis = st.sidebar.selectbox("Choose column for X-axis",['ibu','beer_name','style','brewery_name', 'city', 'state',  'ounces'])
     
     y_axis = st.sidebar.selectbox("Choose column for y-axis",['abv'])
    
-    chart_type = st.sidebar.selectbox("Choose Your Chart Type",['line','bar','area'])
+    chart_type = st.sidebar.selectbox("Choose Your Chart Type",['line','bar'])
      
     
     if chart_type == 'line':
@@ -58,9 +58,9 @@ if section == 'Data Explorer':
         grouping = create_grouping(x_axis, y_axis)
         st.bar_chart(grouping)
                 
-    elif chart_type == 'area':
-        fig = px.strip(df[[x_axis, y_axis]], x=x_axis, y=y_axis)
-        st.plotly_chart(fig)    
+  #  elif chart_type == 'area':
+  #      fig = px.strip(df[[x_axis, y_axis]], x=x_axis, y=y_axis)
+  #      st.plotly_chart(fig)    
         
     st.write(df)
     
