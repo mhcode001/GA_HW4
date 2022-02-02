@@ -8,7 +8,7 @@ Created on Wed Jan  5 15:50:12 2022
 
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 import pickle 
 
 st.title("Craft Beer ABU")
