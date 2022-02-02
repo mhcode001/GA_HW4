@@ -8,7 +8,7 @@ Created on Wed Jan  5 15:50:12 2022
 
 import streamlit as st
 import pandas as pd
-#import plotly.express as px
+import plotly.express as px
 import pickle 
 
 st.title("Craft Beer ABU")
@@ -47,7 +47,7 @@ if section == 'Data Explorer':
     
     y_axis = st.sidebar.selectbox("Choose column for y-axis",['abv'])
    
-    chart_type = st.sidebar.selectbox("Choose Your Chart Type",['line','bar'])
+    chart_type = st.sidebar.selectbox("Choose Your Chart Type",['line','bar','area'])
      
     
     if chart_type == 'line':
@@ -58,9 +58,9 @@ if section == 'Data Explorer':
         grouping = create_grouping(x_axis, y_axis)
         st.bar_chart(grouping)
                 
-  #  elif chart_type == 'area':
-  #      fig = px.strip(df[[x_axis, y_axis]], x=x_axis, y=y_axis)
-  #      st.plotly_chart(fig)    
+    elif chart_type == 'area':
+        fig = px.strip(df[[x_axis, y_axis]], x=x_axis, y=y_axis)
+        st.plotly_chart(fig)    
         
     st.write(df)
     
