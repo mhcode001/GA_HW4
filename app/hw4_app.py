@@ -16,8 +16,8 @@ st.title("Craft Beer ABU")
 url = r"https://raw.githubusercontent.com/mhcode001/GA_HW4_App/main/data/allcraftbeer.csv"
 
 num_rows = st.sidebar.number_input('Select Number of Rows to Load', 
-                                  min_value = 500, 
-                                  max_value = 1500, 
+                                  min_value = 1000, 
+                                  max_value = 3000, 
                                   step = 100)
 
 section = st.sidebar.radio('Choose Application Section', ['Data Explorer', 
