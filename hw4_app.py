@@ -12,9 +12,9 @@ import numpy as np
 import plotly.express as px
 import pickle 
 
-st.title("Insurance Premium")
+st.title("Craft Beer ABU")
 
-url = r"https://raw.githubusercontent.com/mhcode001/GA_HW3_App/main/insurance_premiums.csv"
+url = r"https://raw.githubusercontent.com/mhcode001/GA_HW4_App/main/allcraftbeer.csv"
 
 num_rows = st.sidebar.number_input('Select Number of Rows to Load', 
                                   min_value = 500, 
@@ -44,9 +44,9 @@ df = load_data(num_rows)
 
 if section == 'Data Explorer':
     
-    x_axis = st.sidebar.selectbox("Choose column for X-axis",['age','sex','children', 'smoker', 'region'])
+    x_axis = st.sidebar.selectbox("Choose column for X-axis",['beer_name','style','brewery_name', 'city', 'state', 'ibu', 'ounces'])
     
-    y_axis = st.sidebar.selectbox("Choose column for y-axis",['charges'])
+    y_axis = st.sidebar.selectbox("Choose column for y-axis",['abv'])
    
     chart_type = st.sidebar.selectbox("Choose Your Chart Type",['line','bar','area'])
      
@@ -70,30 +70,35 @@ else:
 
     model = load_model()
 
-    sex = st.sidebar.radio('Choose Sex', ['female', 'male'])
+    beer_name = st.sidebar.selectbox("Beer", df['beer_name'].unique().tolist())  
 
-    smoker = st.sidebar.radio('Smoker', ['yes', 'no'])
+    style = st.sidebar.selectbox("Style", df['style'].unique().tolist())  
+   
+    brewery_name = st.sidebar.selectbox("Brewery Name", df['brewery_name'].unique().tolist())  
+    
+    city = st.sidebar.selectbox("City", df['city'].unique().tolist())
+    
+    state = st.sidebar.selectbox("State", df['state'].unique().tolist())  
+    
+    ibu = st.sidebar.slider("ibu")
 
-    age = st.sidebar.slider("Age")
+    ounces = st.sidebar.radio("ounces", ['8.4', '12', '16','24'])  
 
-    bmi = st.sidebar.slider("Select BMI", 0.0, 100.0)
-    
-    children = st.sidebar.number_input('Number of Children',0)
-    
-    region = st.sidebar.selectbox("Region", df['region'].unique().tolist())    
-    
+        
     sample = {
-    'sex': sex,
-    'smoker': smoker,
-    'age': age,
-    'region': region,
-    'bmi':bmi,
-    'children': children
-    }
+        'beer_name': beer_name,
+        'style': style,
+        'brewery_name': brewery_name,
+        'city': city,
+        'state': state,
+        'ibu': ibu,
+        'ounces': ounces
+        }
+
 
     sample = pd.DataFrame(sample, index = [0])
     prediction = model.predict(sample)[0]
     
-    st.title(f"Predicted Insurance Premium: ${int(prediction)}")
+    st.title(f"Predicted ABV: {int(prediction)}")
     
 
