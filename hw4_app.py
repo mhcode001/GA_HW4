@@ -8,7 +8,6 @@ Created on Wed Jan  5 15:50:12 2022
 
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import pickle 
 
@@ -100,5 +99,3 @@ else:
     prediction = model.predict(sample)[0]
     
     st.title(f"Predicted ABV: {int(prediction)}")
-    
-
